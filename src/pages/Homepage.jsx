@@ -22,3 +22,5 @@ export default function Homepage() {
         </main>
     );
 }
+
+// Path: src/pages/App.jsx
