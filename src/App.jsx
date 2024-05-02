@@ -12,7 +12,7 @@ import CityList from "./components/CityList";
 const BASE_URL = "http://localhost:3001";
 
 export default function App() {
-    const [cities, setCities] = useState({});
+    const [cities, setCities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -39,8 +39,18 @@ export default function App() {
                 <Route path="pricing" element={<Pricing />} />
                 <Route path="login" element={<Login />} />
                 <Route path="app" element={<AppLayout />}>
-                    <Route index element={<CityList />} />
-                    <Route path="cities" element={<CityList />} />
+                    <Route
+                        index
+                        element={
+                            <CityList cities={cities} isLoading={isLoading} />
+                        }
+                    />
+                    <Route
+                        path="cities"
+                        element={
+                            <CityList cities={cities} isLoading={isLoading} />
+                        }
+                    />
                     <Route
                         path="countries"
                         element={<p>List of countries</p>}
