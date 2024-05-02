@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import styles from "./CountryList.module.css";
 import Spinner from "./Spinner";
-import CityItem from "./CityItem";
+// import CityItem from "./CityItem";
+import CountryItem from "./CountryItem";
 import Message from "./Message";
-import PropTypes from "prop-types";
 
 function CountryList({ cities, isLoading }) {
     if (isLoading) {
@@ -13,10 +14,11 @@ function CountryList({ cities, isLoading }) {
             <Message message="Add your first city by clicking on a city on the map" />
         );
     }
+    const countries = [];
     return (
-        <ul className={styles.CountryList}>
-            {cities.map((city) => (
-                <CityItem city={city} key={city.id} />
+        <ul className={styles.countryList}>
+            {countries.map((country) => (
+                <CountryItem country={country} key={country.id} />
             ))}
         </ul>
     );
