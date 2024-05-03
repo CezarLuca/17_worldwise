@@ -5,7 +5,8 @@ function CountryItem({ country }) {
     return (
         <li className={styles.countryItem}>
             <span>{country.emoji}</span>
-            <span>{country.country}</span>
+            {/* <span>{country.country}</span> */}
+            <span>{country.name}</span>
         </li>
     );
 }
@@ -13,7 +14,8 @@ function CountryItem({ country }) {
 CountryItem.propTypes = {
     country: PropTypes.shape({
         emoji: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
+        // country: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
     }).isRequired,
 };
 

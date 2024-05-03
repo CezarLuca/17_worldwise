@@ -25,7 +25,9 @@ function CityList({ cities, isLoading }) {
 CityList.propTypes = {
     cities: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+                .isRequired,
+            // id: PropTypes.number.isRequired,
             // name: PropTypes.string.isRequired,
         })
     ).isRequired,

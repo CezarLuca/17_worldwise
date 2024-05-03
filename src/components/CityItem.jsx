@@ -9,7 +9,8 @@ const formatDate = (date) =>
     }).format(new Date(date));
 
 function CityItem({ city }) {
-    const { cityName, emoji, date } = city;
+    const { cityName, date } = city;
+    const emoji = city.emoji || "🏙️"; // Default emoji if none is provided
     return (
         <li className={styles.cityItem}>
             <span className={styles.emoji}>{emoji}</span>
@@ -26,7 +27,12 @@ CityItem.propTypes = {
         cityName: PropTypes.string.isRequired,
         emoji: PropTypes.string.isRequired,
         // date: PropTypes.string.isRequired,
-        date: PropTypes.instanceOf(Date).isRequired,
+        // date: PropTypes.instanceOf(Date).isRequired,
+        date: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+            PropTypes.instanceOf(Date),
+        ]).isRequired,
     }).isRequired,
 };
 
