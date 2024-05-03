@@ -16,7 +16,7 @@ function CountryList({ cities, isLoading }) {
     }
 
     // const countries = cities.reduce((arr, city) => {
-    //     if (!arr.map((el) => el.city).includes(city.country)) {
+    //     if (!arr.map((el) => el.country).includes(city.country)) {
     //         return [...arr, { city: city.country, emoji: city.emoji }];
     //     } else {
     //         return arr;
@@ -26,7 +26,7 @@ function CountryList({ cities, isLoading }) {
     const countries = [];
 
     cities.forEach((city) => {
-        const country = countries.find((ctry) => ctry.id === city.id);
+        const country = countries.find((ctry) => ctry.name === city.country);
         if (country) {
             country.cities.push(city);
         } else {
