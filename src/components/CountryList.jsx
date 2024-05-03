@@ -15,29 +15,32 @@ function CountryList({ cities, isLoading }) {
         );
     }
 
-    // const countries = cities.reduce((arr, city) => {
-    //     if (!arr.map((el) => el.country).includes(city.country)) {
-    //         return [...arr, { city: city.country, emoji: city.emoji }];
-    //     } else {
-    //         return arr;
-    //     }
-    // }, []);
-
-    const countries = [];
-
-    cities.forEach((city) => {
-        const country = countries.find((ctry) => ctry.name === city.country);
-        if (country) {
-            country.cities.push(city);
+    const countries = cities.reduce((arr, city) => {
+        if (!arr.map((el) => el.name).includes(city.country)) {
+            return [
+                ...arr,
+                { name: city.country, emoji: city.emoji, id: city.id },
+            ];
         } else {
-            countries.push({
-                id: city.id,
-                name: city.country,
-                cities: [city],
-                emoji: city.emoji,
-            });
+            return arr;
         }
-    });
+    }, []);
+
+    // const countries = [];
+
+    // cities.forEach((city) => {
+    //     const country = countries.find((ctry) => ctry.name === city.country);
+    //     if (country) {
+    //         country.cities.push(city);
+    //     } else {
+    //         countries.push({
+    //             id: city.id,
+    //             name: city.country,
+    //             cities: [city],
+    //             emoji: city.emoji,
+    //         });
+    //     }
+    // });
 
     return (
         <ul className={styles.countryList}>
