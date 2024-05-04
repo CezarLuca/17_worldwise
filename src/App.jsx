@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Homepage from "./pages/Homepage";
 import AppLayout from "./pages/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
+import City from "./components/City";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 
@@ -52,6 +53,7 @@ export default function App() {
                             <CityList cities={cities} isLoading={isLoading} />
                         }
                     />
+                    <Route path="cities/:id" element={<City />} />
                     <Route
                         path="countries"
                         element={
