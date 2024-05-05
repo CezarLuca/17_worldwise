@@ -10,20 +10,20 @@ import { useParams } from "react-router-dom";
 //   }).format(new Date(date));
 
 function City() {
-    const x = useParams();
-    console.log("CityItem useParams", x);
+    const { id } = useParams();
+    // console.log("CityItem useParams", x);
 
     // TEMP DATA
-    const currentCity = {
-        cityName: "Lisbon",
-        emoji: "🇵🇹",
-        date: "2027-10-31T15:59:59.138Z",
-        notes: "My favorite city so far!",
-    };
+    // const currentCity = {
+    //     cityName: "Lisbon",
+    //     emoji: "🇵🇹",
+    //     date: "2027-10-31T15:59:59.138Z",
+    //     notes: "My favorite city so far!",
+    // };
 
-    const { cityName, emoji, date, notes } = currentCity;
+    // const { cityName, emoji, date, notes } = currentCity;
 
-    return <h1>City</h1>;
+    return <h1>City {id}</h1>;
 
     // return (
     //   <div className={styles.city}>

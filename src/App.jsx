@@ -53,7 +53,7 @@ export default function App() {
                             <CityList cities={cities} isLoading={isLoading} />
                         }
                     />
-                    <Route path="cities/:city" element={<City />} />
+                    <Route path="cities/:id" element={<City />} />
                     <Route
                         path="countries"
                         element={
