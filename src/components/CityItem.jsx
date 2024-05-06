@@ -10,11 +10,15 @@ const formatDate = (date) =>
     }).format(new Date(date));
 
 function CityItem({ city }) {
-    const { cityName, date, id } = city;
+    const { cityName, date, id, position } = city;
+    console.log("CityItem", position);
     const emoji = city.emoji || "🏙️"; // Default emoji if none is provided
     return (
         <li>
-            <Link className={styles.cityItem} to={`${id}`}>
+            <Link
+                className={styles.cityItem}
+                to={`${id}?lat=${position.lat}&lng=&${position.lng}`}
+            >
                 <span className={styles.emoji}>{emoji}</span>
                 <h3 className={styles.name}>{cityName}</h3>
                 <time className={styles.date}>({formatDate(date)})</time>
@@ -33,6 +37,26 @@ CityItem.propTypes = {
             .isRequired,
         // date: PropTypes.string.isRequired,
         // date: PropTypes.instanceOf(Date).isRequired,
+        position: PropTypes.oneOfType([
+            PropTypes.shape({
+                lat: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+                    .isRequired,
+                lng: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+                    .isRequired,
+            }),
+            PropTypes.arrayOf(
+                PropTypes.shape({
+                    lat: PropTypes.oneOfType([
+                        PropTypes.string,
+                        PropTypes.number,
+                    ]).isRequired,
+                    lng: PropTypes.oneOfType([
+                        PropTypes.string,
+                        PropTypes.number,
+                    ]).isRequired,
+                })
+            ),
+        ]).isRequired,
         date: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
