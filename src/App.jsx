@@ -10,6 +10,7 @@ import PageNotFound from "./pages/PageNotFound";
 import City from "./components/City";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
+import Form from "./components/Form";
 
 const BASE_URL = "http://localhost:3001";
 
@@ -63,7 +64,7 @@ export default function App() {
                             />
                         }
                     />
-                    <Route path="form" element={<p>Form</p>} />
+                    <Route path="form" element={<Form />} />
                 </Route>
                 <Route path="*" element={<PageNotFound />} />
             </Routes>

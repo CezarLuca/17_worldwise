@@ -11,7 +11,7 @@ const formatDate = (date) =>
 
 function CityItem({ city }) {
     const { cityName, date, id, position } = city;
-    console.log("CityItem", position);
+    // console.log("CityItem", position);
     const emoji = city.emoji || "🏙️"; // Default emoji if none is provided
     return (
         <li>
