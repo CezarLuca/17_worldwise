@@ -1,6 +1,6 @@
 // import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
@@ -12,7 +12,7 @@ import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import Form from "./components/Form";
 
-const BASE_URL = "http://localhost:3001";
+// const BASE_URL = "http://localhost:3001";
 
 export default function App() {
     // const [cities, setCities] = useState([]);
