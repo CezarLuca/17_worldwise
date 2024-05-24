@@ -1,0 +1,3 @@
+/*
+    Consuming Contexrt in a class component
+*/
