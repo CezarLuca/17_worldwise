@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const BASE_URL = "http://localhost:3001";
 
@@ -29,5 +30,12 @@ function CitiesProvider({ children }) {
         </CitiesContext.Provider>
     );
 }
+
+CitiesProvider.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+};
 
 export { CitiesProvider, CitiesContext };
