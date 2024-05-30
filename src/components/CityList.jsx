@@ -30,8 +30,6 @@ CityList.propTypes = {
         PropTypes.shape({
             id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
                 .isRequired,
-            // id: PropTypes.number.isRequired,
-            // name: PropTypes.string.isRequired,
         })
     ).isRequired,
     isLoading: PropTypes.bool.isRequired,

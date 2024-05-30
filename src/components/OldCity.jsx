@@ -16,12 +16,34 @@ const formatDate = (date) =>
 function City() {
     const { id } = useParams();
     const { getCityById, currentCity, isLoading } = useCities();
+    // const [searchParams, setSearchParams] = useSearchParams();
+    // const lat = searchParams.get("lat");
+    // const lng = searchParams.get("lng");
 
     useEffect(() => {
         getCityById(id);
     }, [id]);
 
+    // console.log("CityItem useParams", x);
+
+    // TEMP DATA
+    // const currentCity = {
+    //     cityName: "Lisbon",
+    //     emoji: "🇵🇹",
+    //     date: "2027-10-31T15:59:59.138Z",
+    //     notes: "My favorite city so far!",
+    // };
+
     const { cityName, emoji, date, notes } = currentCity;
+
+    // return (
+    //     <>
+    //         <h1>City {id}</h1>
+    //         <h2>
+    //             Position: {lat}, {lng}
+    //         </h2>
+    //     </>
+    // );
 
     if (isLoading) return <Spinner />;
 

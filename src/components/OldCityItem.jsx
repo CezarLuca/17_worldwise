@@ -13,6 +13,7 @@ const formatDate = (date) =>
 function CityItem({ city }) {
     const { currentCity } = useCities();
     const { cityName, date, id, position } = city;
+    // console.log("CityItem", position);
     const emoji = city.emoji || "🏙️"; // Default emoji if none is provided
     const linkLocation = useLocation();
     let linkPath = `${id}?lat=${position.lat}&lng=&${position.lng}`;
@@ -27,6 +28,7 @@ function CityItem({ city }) {
                 className={`${styles.cityItem} ${
                     id === currentCity.id ? styles["cityItem--active"] : ""
                 } `}
+                // to={`${id}?lat=${position.lat}&lng=&${position.lng}`}
                 to={linkPath}
             >
                 <span className={styles.emoji}>{emoji}</span>
@@ -40,10 +42,13 @@ function CityItem({ city }) {
 
 CityItem.propTypes = {
     city: PropTypes.shape({
+        // id: PropTypes.number.isRequired,
         cityName: PropTypes.string.isRequired,
         emoji: PropTypes.string.isRequired,
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
             .isRequired,
+        // date: PropTypes.string.isRequired,
+        // date: PropTypes.instanceOf(Date).isRequired,
         position: PropTypes.oneOfType([
             PropTypes.shape({
                 lat: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
