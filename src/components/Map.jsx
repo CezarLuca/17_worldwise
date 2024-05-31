@@ -15,7 +15,7 @@ export default function Map() {
                 navigate("form");
             }}
         >
-            <h1>Map</h1>
+            {/* <h1>Map</h1>
             <h2>
                 Position: {lat} {lng}
             </h2>
@@ -25,7 +25,7 @@ export default function Map() {
                 }}
             >
                 Change Position
-            </button>
+            </button> */}
         </div>
     );
 }
