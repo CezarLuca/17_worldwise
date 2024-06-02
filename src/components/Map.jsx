@@ -48,7 +48,8 @@ export default function Map() {
                         key={city.id}
                     >
                         <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
+                            <span>{city.emoji}</span>{" "}
+                            <span>{city.cityName}</span>
                         </Popup>
                     </Marker>
                 ))}
