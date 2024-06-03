@@ -11,8 +11,8 @@ export default function Map() {
     const [mapPosition, setMapPosition] = useState([51.505, -0.09]);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const lat = searchParams.get("lat");
-    const lng = searchParams.get("lng");
+    const mapLat = searchParams.get("lat");
+    const mapLng = searchParams.get("lng");
 
     return (
         <div
@@ -33,8 +33,9 @@ export default function Map() {
                 Change Position
             </button> */}
             <MapContainer
-                center={mapPosition}
-                zoom={13}
+                // center={mapPosition}
+                center={[mapLat, mapLng]}
+                zoom={8}
                 scrollWheelZoom={false}
                 className={styles.map}
             >
@@ -55,5 +56,18 @@ export default function Map() {
                 ))}
             </MapContainer>
         </div>
+    );
+}
+
+function ChangeCenter() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    return (
+        <button
+            onClick={() => {
+                setSearchParams({ lat: 23, lng: 50 });
+            }}
+        >
+            Change Position
+        </button>
     );
 }
