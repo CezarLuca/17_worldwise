@@ -1,5 +1,6 @@
+import PropTypes from "prop-types";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import styles from "./Map.module.css";
 import { useState } from "react";
 import { useCities } from "../hooks/useCities";
@@ -34,7 +35,7 @@ export default function Map() {
             </button> */}
             <MapContainer
                 // center={mapPosition}
-                center={[mapLat, mapLng]}
+                center={[mapLat || 40, mapLng || 0]}
                 zoom={8}
                 scrollWheelZoom={false}
                 className={styles.map}
@@ -54,20 +55,18 @@ export default function Map() {
                         </Popup>
                     </Marker>
                 ))}
+                <ChangeCenter position={[mapLat, mapLng]} />
             </MapContainer>
         </div>
     );
 }
 
-function ChangeCenter() {
-    const [searchParams, setSearchParams] = useSearchParams();
-    return (
-        <button
-            onClick={() => {
-                setSearchParams({ lat: 23, lng: 50 });
-            }}
-        >
-            Change Position
-        </button>
-    );
+function ChangeCenter({ position }) {
+    const map = useMap();
+    map.setView(position);
+    return null;
 }
+
+ChangeCenter.propTypes = {
+    position: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
