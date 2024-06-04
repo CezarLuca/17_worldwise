@@ -34,8 +34,8 @@ export default function Map() {
                 Change Position
             </button> */}
             <MapContainer
-                // center={mapPosition}
-                center={[mapLat || 40, mapLng || 0]}
+                center={mapPosition}
+                // center={[mapLat || 40, mapLng || 0]}
                 zoom={8}
                 scrollWheelZoom={false}
                 className={styles.map}
@@ -55,7 +55,7 @@ export default function Map() {
                         </Popup>
                     </Marker>
                 ))}
-                <ChangeCenter position={[mapLat, mapLng]} />
+                <ChangeCenter position={[mapLat || 40, mapLng || 0]} />
             </MapContainer>
         </div>
     );
