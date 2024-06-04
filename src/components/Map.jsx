@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import styles from "./Map.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCities } from "../hooks/useCities";
 
 export default function Map() {
@@ -11,9 +11,15 @@ export default function Map() {
 
     const [mapPosition, setMapPosition] = useState([51.505, -0.09]);
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const mapLat = searchParams.get("lat");
     const mapLng = searchParams.get("lng");
+
+    useEffect(() => {
+        if (mapLat && mapLng) {
+            setMapPosition([+mapLat, +mapLng]);
+        }
+    }, [mapLat, mapLng]);
 
     return (
         <div
@@ -55,7 +61,7 @@ export default function Map() {
                         </Popup>
                     </Marker>
                 ))}
-                <ChangeCenter position={[mapLat || 40, mapLng || 0]} />
+                <ChangeCenter position={mapPosition} />
             </MapContainer>
         </div>
     );
