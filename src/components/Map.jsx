@@ -31,9 +31,9 @@ export default function Map() {
     return (
         <div
             className={styles.mapContainer}
-            onClick={() => {
-                navigate("form");
-            }}
+            // onClick={() => {
+            //     navigate("form");
+            // }}
         >
             {/* <h1>Map</h1>
             <h2>
@@ -87,6 +87,7 @@ function DetectClick() {
     useMapEvents({
         click: (e) => {
             navigate(`/form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+            // navigate(`form`);
             // console.log(e.latlng);
         },
     });
