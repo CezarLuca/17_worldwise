@@ -10,15 +10,21 @@ import {
 } from "react-leaflet";
 import styles from "./Map.module.css";
 import { useEffect, useState } from "react";
-import { useCities } from "../hooks/useCities";
+import { useCities } from "../context/CitiesContext";
+import { useGeolocation } from "../hooks/useGeolocation";
+import AppButton from "./AppButton";
 
 export default function Map() {
     // const navigate = useNavigate();
     const { citites } = useCities();
-
     const [mapPosition, setMapPosition] = useState([51.505, -0.09]);
-
     const [searchParams] = useSearchParams();
+    const {
+        isLoading: isLoadingPosition,
+        position: geolocationPosition,
+        getPosition,
+    } = useGeolocation();
+
     const mapLat = searchParams.get("lat");
     const mapLng = searchParams.get("lng");
 
@@ -35,6 +41,9 @@ export default function Map() {
             //     navigate("form");
             // }}
         >
+            <AppButton type="positon" onClick={getPosition}>
+                {isLoadingPosition ? "Loading..." : "Get Position"}
+            </AppButton>
             {/* <h1>Map</h1>
             <h2>
                 Position: {lat} {lng}
