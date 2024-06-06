@@ -34,6 +34,15 @@ export default function Map() {
         }
     }, [mapLat, mapLng]);
 
+    useEffect(() => {
+        if (geolocationPosition) {
+            setMapPosition([
+                geolocationPosition.coords.latitude,
+                geolocationPosition.coords.longitude,
+            ]);
+        }
+    }, [geolocationPosition]);
+
     return (
         <div
             className={styles.mapContainer}
