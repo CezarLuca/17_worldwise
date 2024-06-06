@@ -50,9 +50,11 @@ export default function Map() {
             //     navigate("form");
             // }}
         >
-            <AppButton type="positon" onClick={getPosition}>
-                {isLoadingPosition ? "Loading..." : "Get Position"}
-            </AppButton>
+            {!geolocationPosition && (
+                <AppButton type="positon" onClick={getPosition}>
+                    {isLoadingPosition ? "Loading..." : "Get Position"}
+                </AppButton>
+            )}
             {/* <h1>Map</h1>
             <h2>
                 Position: {lat} {lng}
