@@ -11,16 +11,21 @@ function Form() {
     const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
     // console.log(lat, lng);
     const [cityName, setCityName] = useState("");
+    const [country, setCountry] = useState("");
     const [date, setDate] = useState(new Date());
     const [notes, setNotes] = useState("");
 
     useEffect(() => {
-        async function fetchCityDAta() {
+        async function fetchCityData() {
             try {
                 setIsLoadingGeocoding(true);
                 const response = await fetch(
                     `${BASE_URL}?latitude=${lat}&longitude=${lng}`
                 );
+                const data = await response.json();
+                console.log(data);
+                setCityName(data.city || data.locality || "");
+                setCountry(data.countryName || "");
                 // `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
             } catch (error) {
                 console.error(error);
@@ -28,6 +33,7 @@ function Form() {
                 setIsLoadingGeocoding(false);
             }
         }
+        fetchCityData();
     }, [lat, lng]);
 
     return (
