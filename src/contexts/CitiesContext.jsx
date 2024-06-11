@@ -15,7 +15,10 @@ function CitiesProvider({ children }) {
             try {
                 setIsLoading(true);
                 const res = await fetch(`${BASE_URL}/cities`);
-                const data = await res.json();
+                let data = await res.json();
+                if (!Array.isArray(data)) {
+                    data = [];
+                }
                 setCities(data);
             } catch (error) {
                 console.error(error);

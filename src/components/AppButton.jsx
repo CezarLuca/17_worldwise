@@ -11,7 +11,8 @@ function AppButton({ children, onClick, type }) {
 
 AppButton.propTypes = {
     children: PropTypes.node.isRequired,
-    onClick: PropTypes.func.isRequired,
+    // onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     type: PropTypes.string,
 };
 

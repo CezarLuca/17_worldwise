@@ -2,7 +2,7 @@ import styles from "./CityList.module.css";
 import Spinner from "./Spinner";
 import CityItem from "./CityItem";
 import Message from "./Message";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { useCities } from "../contexts/CitiesContext";
 
 function CityList() {
@@ -26,13 +26,13 @@ function CityList() {
 }
 
 CityList.propTypes = {
-    cities: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-                .isRequired,
-        })
-    ).isRequired,
-    isLoading: PropTypes.bool.isRequired,
+    // cities: PropTypes.arrayOf(
+    //     PropTypes.shape({
+    //         id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    //             .isRequired,
+    //     })
+    // ).isRequired,
+    // isLoading: PropTypes.bool.isRequired,
 };
 
 export default CityList;
