@@ -22,7 +22,9 @@ function Form() {
     const [country, setCountry] = useState("");
     const [date, setDate] = useState(new Date());
     const [notes, setNotes] = useState("");
-    const emoji = convertToEmoji(country);
+    // const emoji = convertToEmoji(country);
+    const [emoji, setEmoji] = useState("");
+    const [geocodingError, setGeocodingError] = useState("");
 
     useEffect(() => {
         async function fetchCityData() {
@@ -33,17 +35,25 @@ function Form() {
                 );
                 const data = await response.json();
                 console.log(data);
+                if (!data.countryCode)
+                    throw new Error(
+                        "That doesn't seem like a city. Click somewhere else."
+                    );
                 setCityName(data.city || data.locality || "");
                 setCountry(data.countryName || "");
                 // `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+                setEmoji(convertToEmoji(data.countryCode || ""));
             } catch (error) {
-                console.error(error);
+                // console.error(error);
+                setGeocodingError(error.message);
             } finally {
                 setIsLoadingGeocoding(false);
             }
         }
         fetchCityData();
     }, [lat, lng]);
+
+    if (geocodingError) return <Message message={geocodingError} />;
 
     return (
         <form className={styles.form}>
