@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import AppButton from "./AppButton";
@@ -29,6 +30,7 @@ function Form() {
     const [geocodingError, setGeocodingError] = useState("");
 
     useEffect(() => {
+        if (!lat || !lng) return;
         async function fetchCityData() {
             try {
                 setIsLoadingGeocoding(true);
@@ -57,6 +59,8 @@ function Form() {
 
     if (isLoadingGeocoding) return <Spinner />;
 
+    if (!lat || !lng) return <Message message="Click somewhere on the map" />;
+
     if (geocodingError) return <Message message={geocodingError} />;
 
     return (
@@ -68,6 +72,7 @@ function Form() {
                     onChange={(e) => setCityName(e.target.value)}
                     value={cityName}
                 />
+                <span className={styles.flag}>{emoji}</span>
             </div>
 
             <div className={styles.row}>
