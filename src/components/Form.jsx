@@ -57,6 +57,8 @@ function Form() {
         fetchCityData();
     }, [lat, lng]);
 
+    function handleSubmit(event) {}
+
     if (isLoadingGeocoding) return <Spinner />;
 
     if (!lat || !lng) return <Message message="Click somewhere on the map" />;
@@ -64,7 +66,7 @@ function Form() {
     if (geocodingError) return <Message message={geocodingError} />;
 
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.row}>
                 <label htmlFor="cityName">City name</label>
                 <input
