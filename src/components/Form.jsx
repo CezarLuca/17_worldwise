@@ -6,6 +6,7 @@ import BackButton from "./BackButton";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import Message from "./Message";
 import Spinner from "./Spinner";
+import DatePicker from "react-datepicker";
 
 export function convertToEmoji(countryCode) {
     const codePoints = countryCode
@@ -82,11 +83,12 @@ function Form() {
 
             <div className={styles.row}>
                 <label htmlFor="date">When did you go to {cityName}?</label>
-                <input
+                {/* <input
                     id="date"
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
-                />
+                /> */}
+                <DatePicker />
             </div>
 
             <div className={styles.row}>
