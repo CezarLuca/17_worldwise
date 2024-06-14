@@ -57,7 +57,10 @@ function Form() {
         fetchCityData();
     }, [lat, lng]);
 
-    function handleSubmit(event) {}
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(cityName, country, date, notes);
+    }
 
     if (isLoadingGeocoding) return <Spinner />;
 
