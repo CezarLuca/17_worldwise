@@ -1,12 +1,13 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Form.module.css";
 import AppButton from "./AppButton";
 import BackButton from "./BackButton";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import Message from "./Message";
 import Spinner from "./Spinner";
-import DatePicker from "react-datepicker";
 
 export function convertToEmoji(countryCode) {
     const codePoints = countryCode
@@ -39,7 +40,7 @@ function Form() {
                     `${BASE_URL}?latitude=${lat}&longitude=${lng}`
                 );
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
                 if (!data.countryCode)
                     throw new Error(
                         "That doesn't seem like a city. Click somewhere else."
@@ -60,7 +61,18 @@ function Form() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(cityName, country, date, notes);
+        // console.log(cityName, country, date, notes);
+        if (!cityName || !date) return;
+
+        const newCity = {
+            cityName,
+            country,
+            emoji,
+            date,
+            notes,
+            position: { lat, lng },
+        };
+        // console.log(newCity);
     }
 
     if (isLoadingGeocoding) return <Spinner />;
@@ -88,7 +100,12 @@ function Form() {
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                 /> */}
-                <DatePicker />
+                <DatePicker
+                    id="date"
+                    onChange={(date) => setDate(date)}
+                    selected={date}
+                    dateFormat={"dd/MM/yyyy"}
+                />
             </div>
 
             <div className={styles.row}>
