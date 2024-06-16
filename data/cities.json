@@ -59,6 +59,18 @@
         "lat": "55.92150795277898",
         "lng": "-3.1695556640625004"
       }
+    },
+    {
+      "id": "0f9f",
+      "cityName": "Glasgow",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2024-06-16T21:54:53.136Z",
+      "notes": "TEST3",
+      "position": {
+        "lat": "55.83522882231775",
+        "lng": "-4.262695312500001"
+      }
     }
   ]
 }
