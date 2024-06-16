@@ -1,40 +1,64 @@
 {
-    "cities": [
-        {
-            "cityName": "Lisbon",
-            "country": "Portugal",
-            "emoji": "PT",
-            "date": "2027-10-31T15:59:59.138Z",
-            "notes": "My favorite city so far!",
-            "position": {
-                "lat": 38.727881642324164,
-                "lng": -9.140900099907554
-            },
-            "id": 73930385
-        },
-        {
-            "cityName": "Madrid",
-            "country": "Spain",
-            "emoji": "ES",
-            "date": "2027-07-15T08:22:53.976Z",
-            "notes": "",
-            "position": {
-                "lat": 40.46635901755316,
-                "lng": -3.7133789062500004
-            },
-            "id": 17806751
-        },
-        {
-            "cityName": "Berlin",
-            "country": "Germany",
-            "emoji": "DE",
-            "date": "2027-02-12T09:24:11.863Z",
-            "notes": "Amazing 😃",
-            "position": {
-                "lat": 52.53586782505711,
-                "lng": 13.376933665713324
-            },
-            "id": 98443197
-        }
-    ]
+  "cities": [
+    {
+      "cityName": "Lisbon",
+      "country": "Portugal",
+      "emoji": "PT",
+      "date": "2027-10-31T15:59:59.138Z",
+      "notes": "My favorite city so far!",
+      "position": {
+        "lat": 38.727881642324164,
+        "lng": -9.140900099907554
+      },
+      "id": "73930385"
+    },
+    {
+      "cityName": "Madrid",
+      "country": "Spain",
+      "emoji": "ES",
+      "date": "2027-07-15T08:22:53.976Z",
+      "notes": "",
+      "position": {
+        "lat": 40.46635901755316,
+        "lng": -3.7133789062500004
+      },
+      "id": "17806751"
+    },
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "DE",
+      "date": "2027-02-12T09:24:11.863Z",
+      "notes": "Amazing 😃",
+      "position": {
+        "lat": 52.53586782505711,
+        "lng": 13.376933665713324
+      },
+      "id": "98443197"
+    },
+    {
+      "id": "53fb",
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2024-06-16T21:44:06.031Z",
+      "notes": "TEST",
+      "position": {
+        "lat": "51.49164465653034",
+        "lng": "-0.13183593750000003"
+      }
+    },
+    {
+      "id": "7479",
+      "cityName": "Edinburgh",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2024-06-16T21:46:58.592Z",
+      "notes": "TEST2",
+      "position": {
+        "lat": "55.92150795277898",
+        "lng": "-3.1695556640625004"
+      }
+    }
+  ]
 }
