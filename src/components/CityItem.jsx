@@ -11,7 +11,7 @@ const formatDate = (date) =>
     }).format(new Date(date));
 
 function CityItem({ city }) {
-    const { currentCity } = useCities();
+    const { currentCity, deleteCity } = useCities();
     const { cityName, date, id, position } = city;
     const emoji = city.emoji || "🏙️"; // Default emoji if none is provided
     const linkLocation = useLocation();
@@ -19,6 +19,12 @@ function CityItem({ city }) {
 
     if (linkLocation.pathname === "/app") {
         linkPath = "/app/cities/" + linkPath;
+    }
+
+    function handleClick(event) {
+        event.preventDefault();
+        deleteCity(id);
+        // console.log("Delete button clicked");
     }
 
     return (
@@ -32,7 +38,9 @@ function CityItem({ city }) {
                 <span className={styles.emoji}>{emoji}</span>
                 <h3 className={styles.name}>{cityName}</h3>
                 <time className={styles.date}>({formatDate(date)})</time>
-                <button className={styles.deleteBtn}>&times;</button>
+                <button className={styles.deleteBtn} onClick={handleClick}>
+                    &times;
+                </button>
             </Link>
         </li>
     );
