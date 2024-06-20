@@ -37,39 +37,51 @@
       "id": "98443197"
     },
     {
-      "id": "53fb",
-      "cityName": "London",
-      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
-      "emoji": "🇬🇧",
-      "date": "2024-06-16T21:44:06.031Z",
-      "notes": "TEST",
+      "id": "5abd",
+      "cityName": "Munich",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2024-06-20T07:25:13.720Z",
+      "notes": "TEST3\n",
       "position": {
-        "lat": "51.49164465653034",
-        "lng": "-0.13183593750000003"
+        "lat": "48.11843396091691",
+        "lng": "11.5576171875"
       }
     },
     {
-      "id": "7479",
-      "cityName": "Edinburgh",
-      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
-      "emoji": "🇬🇧",
-      "date": "2024-06-16T21:46:58.592Z",
-      "notes": "TEST2",
+      "id": "992d",
+      "cityName": "Nurnberg",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2024-06-20T07:25:47.432Z",
+      "notes": "TEST4",
       "position": {
-        "lat": "55.92150795277898",
-        "lng": "-3.1695556640625004"
+        "lat": "49.42169406084926",
+        "lng": "11.063232421875002"
       }
     },
     {
-      "id": "0f9f",
-      "cityName": "Glasgow",
-      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
-      "emoji": "🇬🇧",
-      "date": "2024-06-16T21:54:53.136Z",
-      "notes": "TEST3",
+      "id": "050d",
+      "cityName": "Ansbach",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2024-06-20T07:26:11.884Z",
+      "notes": "TEST5",
       "position": {
-        "lat": "55.83522882231775",
-        "lng": "-4.262695312500001"
+        "lat": "49.28393181795618",
+        "lng": "10.5743408203125"
+      }
+    },
+    {
+      "id": "ac78",
+      "cityName": "Ingolstadt",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2024-06-20T07:56:15.337Z",
+      "notes": "TEST5",
+      "position": {
+        "lat": "48.7453232421382",
+        "lng": "11.458740234375002"
       }
     }
   ]

@@ -1,6 +1,6 @@
 import {
     createContext,
-    useState,
+    // useState,
     useEffect,
     useContext,
     useReducer,
@@ -34,15 +34,21 @@ function reducer(state, action) {
                 ...state,
                 isLoading: false,
                 cities: [...state.cities, action.payload],
+                currentCity: action.payload,
             };
 
-        case "citiy/deleted":
+        case "city/deleted":
             return {
                 ...state,
                 isLoading: false,
                 cities: state.cities.filter(
                     (city) => city.id !== action.payload
                 ),
+                // currentCity: {},
+                currentCity:
+                    state.currentCity.id === action.payload
+                        ? {}
+                        : state.currentCity,
             };
 
         case "rejected":
@@ -54,7 +60,7 @@ function reducer(state, action) {
 }
 
 function CitiesProvider({ children }) {
-    const [{ cities, isLoading, currentCity }, dispatch] = useReducer(
+    const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
         reducer,
         initialState
     );
@@ -79,7 +85,7 @@ function CitiesProvider({ children }) {
                 // console.error(error);
                 dispatch({
                     type: "rejected",
-                    payload: "There was an error loading the data...",
+                    payload: "There was an error loading the cities...",
                 });
                 // } finally {
                 // setIsLoading(false);
@@ -89,6 +95,8 @@ function CitiesProvider({ children }) {
     }, []);
 
     async function getCityById(id) {
+        if (Number(id) === currentCity.id) return;
+
         dispatch({ type: "loading" });
 
         try {
@@ -96,8 +104,13 @@ function CitiesProvider({ children }) {
             const res = await fetch(`${BASE_URL}/cities/${id}`);
             const data = await res.json();
             // setCurrentCity(data);
+            dispatch({ type: "city/loaded", payload: data });
         } catch (error) {
-            console.error(error);
+            dispatch({
+                type: "rejected",
+                payload: "There was an error loading the city...",
+            });
+            // console.error(error);
             // } finally {
             //     setIsLoading(false);
         }
@@ -118,8 +131,14 @@ function CitiesProvider({ children }) {
             const data = await res.json();
             // console.log(data);
             // setCities((prevCities) => [...prevCities, data]);
+            dispatch({ type: "city/created", payload: data });
         } catch {
-            alert("There was an error creating the city. Please try again.");
+            dispatch({
+                type: "rejected",
+                payload: "There was an error creating the city...",
+            });
+
+            // alert("There was an error creating the city. Please try again.");
             // } finally {
             //     setIsLoading(false);
         }
@@ -136,8 +155,13 @@ function CitiesProvider({ children }) {
             // setCities((prevCities) =>
             //     prevCities.filter((city) => city.id !== id)
             // );
+            dispatch({ type: "city/deleted", payload: id });
         } catch {
-            alert("There was an error deleting the city. Please try again.");
+            dispatch({
+                type: "rejected",
+                payload: "There was an error deleting the city...",
+            });
+            // alert("There was an error deleting the city. Please try again.");
             // } finally {
             //     setIsLoading(false);
         }
@@ -149,6 +173,7 @@ function CitiesProvider({ children }) {
                 cities,
                 isLoading,
                 currentCity,
+                error,
                 getCityById,
                 createCity,
                 deleteCity,
