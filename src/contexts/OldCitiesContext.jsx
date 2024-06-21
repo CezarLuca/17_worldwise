@@ -1,4 +1,10 @@
-import { createContext, useEffect, useContext, useReducer } from "react";
+import {
+    createContext,
+    // useState,
+    useEffect,
+    useContext,
+    useReducer,
+} from "react";
 import PropTypes from "prop-types";
 
 const BASE_URL = "http://localhost:3001";
@@ -38,6 +44,7 @@ function reducer(state, action) {
                 cities: state.cities.filter(
                     (city) => city.id !== action.payload
                 ),
+                // currentCity: {},
                 currentCity:
                     state.currentCity.id === action.payload
                         ? {}
@@ -57,23 +64,31 @@ function CitiesProvider({ children }) {
         reducer,
         initialState
     );
+    // const [cities, setCities] = useState([]);
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [currentCity, setCurrentCity] = useState({});
 
     useEffect(() => {
         async function fetchCities() {
             dispatch({ type: "loading" });
 
             try {
+                // setIsLoading(true);
                 const res = await fetch(`${BASE_URL}/cities`);
                 let data = await res.json();
                 if (!Array.isArray(data)) {
                     data = [];
                 }
                 dispatch({ type: "cities/loaded", payload: data });
+                // setCities(data);
             } catch (error) {
+                // console.error(error);
                 dispatch({
                     type: "rejected",
                     payload: "There was an error loading the cities...",
                 });
+                // } finally {
+                // setIsLoading(false);
             }
         }
         fetchCities();
@@ -85,14 +100,19 @@ function CitiesProvider({ children }) {
         dispatch({ type: "loading" });
 
         try {
+            // setIsLoading(true);
             const res = await fetch(`${BASE_URL}/cities/${id}`);
             const data = await res.json();
+            // setCurrentCity(data);
             dispatch({ type: "city/loaded", payload: data });
         } catch (error) {
             dispatch({
                 type: "rejected",
                 payload: "There was an error loading the city...",
             });
+            // console.error(error);
+            // } finally {
+            //     setIsLoading(false);
         }
     }
 
@@ -100,6 +120,7 @@ function CitiesProvider({ children }) {
         dispatch({ type: "loading" });
 
         try {
+            // setIsLoading(true);
             const res = await fetch(`${BASE_URL}/cities`, {
                 method: "POST",
                 body: JSON.stringify(newCity),
@@ -108,12 +129,18 @@ function CitiesProvider({ children }) {
                 },
             });
             const data = await res.json();
+            // console.log(data);
+            // setCities((prevCities) => [...prevCities, data]);
             dispatch({ type: "city/created", payload: data });
         } catch {
             dispatch({
                 type: "rejected",
                 payload: "There was an error creating the city...",
             });
+
+            // alert("There was an error creating the city. Please try again.");
+            // } finally {
+            //     setIsLoading(false);
         }
     }
 
@@ -121,15 +148,22 @@ function CitiesProvider({ children }) {
         dispatch({ type: "loading" });
 
         try {
+            // setIsLoading(true);
             await fetch(`${BASE_URL}/cities/${id}`, {
                 method: "DELETE",
             });
+            // setCities((prevCities) =>
+            //     prevCities.filter((city) => city.id !== id)
+            // );
             dispatch({ type: "city/deleted", payload: id });
         } catch {
             dispatch({
                 type: "rejected",
                 payload: "There was an error deleting the city...",
             });
+            // alert("There was an error deleting the city. Please try again.");
+            // } finally {
+            //     setIsLoading(false);
         }
     }
 
