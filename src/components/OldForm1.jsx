@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,10 +26,12 @@ function Form() {
     const { createCity, isLoading } = useCities();
     const navigate = useNavigate();
     const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
+    // console.log(lat, lng);
     const [cityName, setCityName] = useState("");
     const [country, setCountry] = useState("");
     const [date, setDate] = useState(new Date());
     const [notes, setNotes] = useState("");
+    // const emoji = convertToEmoji(country);
     const [emoji, setEmoji] = useState("");
     const [geocodingError, setGeocodingError] = useState("");
 
@@ -41,14 +44,17 @@ function Form() {
                     `${BASE_URL}?latitude=${lat}&longitude=${lng}`
                 );
                 const data = await response.json();
+                // console.log(data);
                 if (!data.countryCode)
                     throw new Error(
                         "That doesn't seem like a city. Click somewhere else."
                     );
                 setCityName(data.city || data.locality || "");
                 setCountry(data.countryName || "");
+                // `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
                 setEmoji(convertToEmoji(data.countryCode || ""));
             } catch (error) {
+                // console.error(error);
                 setGeocodingError(error.message);
             } finally {
                 setIsLoadingGeocoding(false);
@@ -59,6 +65,7 @@ function Form() {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        // console.log(cityName, country, date, notes);
         if (!cityName || !date) return;
 
         const newCity = {
@@ -69,6 +76,7 @@ function Form() {
             notes,
             position: { lat, lng },
         };
+        // console.log(newCity);
         await createCity(newCity);
         navigate("/app/cities");
     }
@@ -96,6 +104,11 @@ function Form() {
 
             <div className={styles.row}>
                 <label htmlFor="date">When did you go to {cityName}?</label>
+                {/* <input
+                    id="date"
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
+                /> */}
                 <DatePicker
                     id="date"
                     onChange={(date) => setDate(date)}
