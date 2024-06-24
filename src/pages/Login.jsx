@@ -1,16 +1,31 @@
 import { useState } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../components/PageNav";
+import AppButton from "../components/AppButton";
+import { useAuth } from "../contexts/MockAuthContext";
 
 export default function Login() {
     // PRE-FILL FOR DEV PURPOSES
     const [email, setEmail] = useState("jack@example.com");
     const [password, setPassword] = useState("qwerty");
 
+    const { login } = useAuth();
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (!email || !password) {
+            console.log("Email and password are required");
+            return;
+        }
+        // console.log("Email:", email);
+        // console.log("Password:", password);
+        login(email, password);
+    }
+
     return (
         <main className={styles.login}>
             <PageNav />
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.row}>
                     <label htmlFor="email">Email address</label>
                     <input
@@ -32,7 +47,8 @@ export default function Login() {
                 </div>
 
                 <div>
-                    <button>Login</button>
+                    {/* <button>Login</button> */}
+                    <AppButton type="primary">Login</AppButton>
                 </div>
             </form>
         </main>
