@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import PageNav from "../components/PageNav";
 import AppButton from "../components/AppButton";
@@ -9,7 +9,7 @@ export default function Login() {
     const [email, setEmail] = useState("jack@example.com");
     const [password, setPassword] = useState("qwerty");
 
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -21,6 +21,15 @@ export default function Login() {
         // console.log("Password:", password);
         login(email, password);
     }
+
+    useEffect(
+        function () {
+            if (isAuthenticated) {
+                console.log("User is authenticated");
+            }
+        },
+        [isAuthenticated]
+    );
 
     return (
         <main className={styles.login}>
