@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/MockAuthContext";
 import styles from "./User.module.css";
 
@@ -10,10 +11,12 @@ import styles from "./User.module.css";
 
 function User() {
     const { user, logout } = useAuth();
+    const navigate = useNavigate();
     // const user = FAKE_USER;
 
     function handleClick() {
         logout();
+        navigate("/");
     }
 
     return (
