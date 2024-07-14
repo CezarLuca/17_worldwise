@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+// import { createContext, useReducer } from "react";
 import PropTypes from "prop-types";
 
 const AuthContext = createContext();
@@ -64,3 +65,4 @@ AuthProvider.propTypes = {
 };
 
 export { AuthProvider, useAuth };
+// export { AuthProvider, AuthContext };

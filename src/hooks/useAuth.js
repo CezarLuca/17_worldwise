@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "./AuthProvider"; // Adjust the import path as necessary
+import { AuthContext } from "../contexts/MockAuthContext"; // Adjust the import path as necessary
 
 function useAuth() {
     const context = useContext(AuthContext);
