@@ -1,17 +1,28 @@
+import { lazy } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Product from "./pages/Product";
-import Pricing from "./pages/Pricing";
-import Login from "./pages/Login";
-import Homepage from "./pages/Homepage";
-import AppLayout from "./pages/AppLayout";
-import PageNotFound from "./pages/PageNotFound";
+
+import { CitiesProvider } from "./contexts/CitiesContext";
+import { AuthProvider } from "./contexts/MockAuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
+
+// import Product from "./pages/Product";
+// import Pricing from "./pages/Pricing";
+// import Login from "./pages/Login";
+// import Homepage from "./pages/Homepage";
+// import AppLayout from "./pages/AppLayout";
+// import PageNotFound from "./pages/PageNotFound";
+
+const Homepage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Login = lazy(() => import("./pages/Login"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+
 import City from "./components/City";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
 import Form from "./components/Form";
-import { CitiesProvider } from "./contexts/CitiesContext";
-import ProtectedRoute from "./pages/ProtectedRoute";
-import { AuthProvider } from "./contexts/MockAuthContext";
 
 export default function App() {
     return (
